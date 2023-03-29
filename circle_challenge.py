@@ -19,31 +19,36 @@ class Circle:
     def get_radius(self):
         return self.radius
 class Validator:
-    def __init__(self, radius, switch):
+    def valid(radius_input):
         try:
-            circle = Circle(radius)
+            float(radius_input)
+            return True
+        except ValueError:
+            return False
+
+
+    ##validation
+radius_input = input('Enter the radius of your circle: ')
+if Validator.valid(radius_input) == True:
+    radius_input = float(radius_input)
+    circle = Circle(radius_input)
+    print(f'Diameter: {circle.calculate_diameter()}')
+    print(f'Circumference: {circle.circumference()}')
+    print(f'Area: {circle.calculate_area()}')
+    while switch == True:
+        grow = input('Would you like your circle to grow? (y/n) ').lower()
+        if grow == 'y':
+            circle.grow()
+            print('Standby while your circle magically grows...')
             print(f'Diameter: {circle.calculate_diameter()}')
             print(f'Circumference: {circle.circumference()}')
             print(f'Area: {circle.calculate_area()}')
-            while switch == True:
-                grow = input('Would you like your circle to grow? (y/n) ').lower()
-                if grow != 'n':
-                    circle.grow()
-                    print('Standby while your circle magically grows...')
-                    print(f'Diameter: {circle.calculate_diameter()}')
-                    print(f'Circumference: {circle.circumference()}')
-                    print(f'Area: {circle.calculate_area()}')
-                else:
-                    print("Goodbye! <END PROGRAM>")
-                    switch = False
-                    break
+        elif grow != 'y' and grow != 'n':
+            print('Please enter "y" or "n".')
+        else:
+            print("Goodbye! <END PROGRAM>")
+            break
+else:
+    print('Please enter a positive number.')
 
-        except ValueError:
-            print('Please enter a valid value.')
-
-while switch == True:
-    ##validation
-    radius = float(input('Enter the radius of your circle: '))
-    valid = Validator(radius, switch)
-    break
 
