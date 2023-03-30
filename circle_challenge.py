@@ -19,18 +19,24 @@ class Circle:
     def get_radius(self):
         return self.radius
 class Validator:
-    def valid(radius_input):
-        try:
-            float(radius_input)
-            return True
-        except ValueError:
+    def valid(self, radius_input):
+        if not isinstance(radius_input, (int, float)):
             return False
+        if radius_input <= 0:
+            return False
+        return True
 
+while switch == True:
 
-    ##validation
-radius_input = input('Enter the radius of your circle: ')
-if Validator.valid(radius_input):
-    radius_input = float(radius_input)
+    validator = Validator()
+    radius_input = input('Enter the radius of your circle: ')
+    try:
+        radius_input = float(radius_input)
+    except ValueError:
+        print('Invalid input')
+    if not validator.valid(radius_input):
+        print('Invalid input')
+        break
     circle = Circle(radius_input)
     print(f'Diameter: {circle.calculate_diameter()}')
     print(f'Circumference: {circle.circumference()}')
@@ -48,7 +54,7 @@ if Validator.valid(radius_input):
         else:
             print("Goodbye! <END PROGRAM>")
             break
-else:
-    print('Please enter a positive number.')
+    else:
+        print('Please enter a positive number.')
 
 
