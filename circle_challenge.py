@@ -54,7 +54,6 @@ while switch == True:
         else:
             print("Goodbye! <END PROGRAM>")
             break
-    else:
-        print('Please enter a positive number.')
+    break
 
 
