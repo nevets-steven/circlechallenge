@@ -29,13 +29,13 @@ class Validator:
 
     ##validation
 radius_input = input('Enter the radius of your circle: ')
-if Validator.valid(radius_input) == True:
+if Validator.valid(radius_input):
     radius_input = float(radius_input)
     circle = Circle(radius_input)
     print(f'Diameter: {circle.calculate_diameter()}')
     print(f'Circumference: {circle.circumference()}')
     print(f'Area: {circle.calculate_area()}')
-    while switch == True:
+    while switch:
         grow = input('Would you like your circle to grow? (y/n) ').lower()
         if grow == 'y':
             circle.grow()
